@@ -8,7 +8,8 @@ test_expect_success 'setup' '
 	mkdir parent &&
 	(cd parent && git init &&
 	 echo one >file && git add file &&
-	 git commit -m one)
+	 git commit -m one) &&
+	git config pull.rebase false
 '
 
 test_expect_success 'git pull -q' '
