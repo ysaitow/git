@@ -327,7 +327,8 @@ static enum rebase_type config_get_rebase(void)
 	if (!git_config_get_value("pull.rebase", &value))
 		return parse_config_rebase("pull.rebase", value, 1);
 
-	if (!opt_ff || strcmp(opt_ff, "--ff-only")) {
+	if (0 <= opt_verbosity &&
+	    (!opt_ff || strcmp(opt_ff, "--ff-only"))) {
 		warning(_("Pulling without specifying how to reconcile divergent branches is\n"
 			"discouraged. You can squelch this message by running one of the following\n"
 			"commands sometime before your next pull:\n"
